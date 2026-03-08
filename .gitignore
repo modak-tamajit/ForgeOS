@@ -1,0 +1,28 @@
+# Build artifacts
+build/
+bin/
+*.o
+*.d
+
+# Plugin shared libraries (built, not tracked)
+plugins/*.so
+
+# Editor backup files
+*.bak
+*~
+
+# History file
+.forgeos_history
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Doxygen output
+docs/html/
+docs/latex/

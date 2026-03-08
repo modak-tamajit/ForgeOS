@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForgeOS — Terminal Operating Environment</title>
+<style>
+  :root { --cyan: #00d4d4; --green: #00ff88; --bg: #0d1117; --card: #161b22; --border: #30363d; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: #e6edf3; font-family: 'Courier New', monospace; }
+  header { border-bottom: 1px solid var(--border); padding: 2rem; text-align: center; }
+  h1 { font-size: 2.5rem; color: var(--cyan); letter-spacing: 4px; text-transform: uppercase; }
+  .tagline { color: #8b949e; margin-top: .5rem; }
+  .version { display: inline-block; background: var(--green); color: #000; padding: 2px 8px; border-radius: 4px; font-size: .75rem; margin-top: .5rem; }
+  main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+  .card h3 { color: var(--cyan); margin-bottom: .75rem; }
+  .card ul { list-style: none; }
+  .card li::before { content: "› "; color: var(--green); }
+  .card li { padding: 2px 0; color: #8b949e; font-size: .9rem; }
+  pre { background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: .85rem; }
+  .prompt { color: var(--green); }
+  .cmd { color: #e6edf3; }
+  footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: #8b949e; font-size: .8rem; margin-top: 3rem; }
+  a { color: var(--cyan); }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚒ ForgeOS</h1>
+  <p class="tagline">A Terminal Operating Environment Built in C</p>
+  <span class="version">v1.0.0 "Ironclad"</span>
+</header>
+<main>
+  <p style="text-align:center; color:#8b949e; margin: 1rem 0;">
+    This page is served by the <strong style="color:var(--cyan)">ForgeOS HTTP Server</strong>
+    — a multithreaded C web server with a thread-pool, static file hosting, and MIME detection.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🐚 Shell</h3>
+      <ul>
+        <li>Command parsing & tokenization</li>
+        <li>Pipes, redirection, &&/||</li>
+        <li>Background processes (&)</li>
+        <li>500-entry history + ↑↓ nav</li>
+        <li>Tab completion</li>
+        <li>Built-ins: cd, echo, export, jobs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📝 Editor</h3>
+      <ul>
+        <li>Open / save files</li>
+        <li>Cursor & viewport movement</li>
+        <li>Insert, delete, newline</li>
+        <li>Incremental search (Ctrl-F)</li>
+        <li>Syntax highlighting: C, Python, Shell</li>
+        <li>Dirty-file tracking (Ctrl-S to save)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🌐 HTTP Server</h3>
+      <ul>
+        <li>8-thread pool, keep-alive</li>
+        <li>Static file serving</li>
+        <li>Directory listing</li>
+        <li>MIME type detection (20+ types)</li>
+        <li>GET / HEAD support</li>
+        <li>Request stats</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>💾 Allocator</h3>
+      <ul>
+        <li>16 MB static heap</li>
+        <li>Free-list with coalescing</li>
+        <li>forge_malloc / free / calloc</li>
+        <li>Thread-safe (mutex-protected)</li>
+        <li>Integrity checker</li>
+        <li>Allocation statistics</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📊 Process Monitor</h3>
+      <ul>
+        <li>Reads /proc filesystem</li>
+        <li>Live CPU % per process</li>
+        <li>Memory usage bars</li>
+        <li>Sort by CPU / MEM / PID</li>
+        <li>Keyboard-driven TUI</li>
+        <li>System load + uptime</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🔌 Plugin System</h3>
+      <ul>
+        <li>dlopen() shared libraries</li>
+        <li>ABI versioning</li>
+        <li>Register shell commands</li>
+        <li>Startup/shutdown hooks</li>
+        <li>Example: hello_plugin.so</li>
+        <li>Hot-load from plugins/</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="color:var(--cyan); margin: 2rem 0 1rem;">Quick Start</h2>
+  <pre><span class="prompt">$ </span><span class="cmd">git clone https://github.com/yourusername/forgeos</span>
+<span class="prompt">$ </span><span class="cmd">cd forgeos && make</span>
+<span class="prompt">$ </span><span class="cmd">make run         # interactive shell</span>
+<span class="prompt">$ </span><span class="cmd">./bin/forgeos -e myfile.c    # open editor</span>
+<span class="prompt">$ </span><span class="cmd">./bin/forgeos -w 8080 ./www  # this server!</span>
+<span class="prompt">$ </span><span class="cmd">./bin/forgeos -p             # process monitor</span>
+<span class="prompt">$ </span><span class="cmd">make test        # run test suite</span></pre>
+</main>
+<footer>
+  ForgeOS v1.0.0 &mdash; MIT License &mdash;
+  <a href="https://github.com/yourusername/forgeos">github.com/yourusername/forgeos</a>
+</footer>
+</body>
+</html>
